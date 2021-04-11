@@ -80,11 +80,11 @@
                 <p>I initially wanted to use a third party ansible role to simplify deployment, so I then settled on both <a href="https://github.com/geerlingguy/ansible-role-nginx">nginx</a> and <a href="https://github.com/geerlingguy/ansible-role-certbot">certbot</a> roles from <a href="https://www.jeffgeerling.com/">Jeff Geerling</a>. I successfully used those to deploy a test site, but was unsatisfied with how complex it was. I had to patch the vendored nginx role to add IPv6 support, and it deployed the redirects using separate files. It all seemed to complex for only one website; a task that could be done with a single <a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html">ansible template</a> and an apt rule. In addition, the certbot role did not support the nginx plugin, so I rewrote it all, and removed the vendored roles.</p>
                 <p>The <a href="https://certbot.eff.org/instructions">recommended way to install certbot</a> on all Linux distros is to use <a href="https://snapcraft.io/docs/installing-snapd">snapd</a>; and while I understand why they chose this approach (software is always up-to-date, and they control the deployment), snapd is a resource-hog which I had already disabled. So I decided to install certbot and certbot-nginx via pip, and keep them up-to-date automatically with a cron job. That makes a compromised <a href="https://pypi.org/">PyPI</a> a point of failure of this server, but I already trust them anyway.</p>
                 <p>In the end, nginx 1.18.0 (from Ubuntu) and certbot 1.9.0 (from PyPI) are both deployed with ansible 2.10.3, with python 3.8.5 (also from Ubuntu) on the server.</p>
+            </section>
             <footer>
                 <a href="./other.html">Continue Reading</a>
             </footer>
         </article>
-        </section>
         <section>
             <article>
                 <header>
